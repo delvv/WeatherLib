@@ -132,7 +132,9 @@ public class OpenweathermapProvider implements IWeatherProvider {
             // Wind
             JSONObject wObj = getObject("wind", jObj);
             weather.wind.setSpeed(getFloat("speed", wObj));
-            weather.wind.setDeg(getFloat("deg", wObj));
+            if (wObj.has("deg")) {
+                weather.wind.setDeg(getFloat("deg", wObj));
+            }
             /*
             try {
                 weather.wind.setGust(getFloat("gust", wObj));
